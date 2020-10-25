@@ -1,22 +1,22 @@
 LIB = ./lib
 
 LIBH = \
+	$(LIB)/registers.h \
 	$(LIB)/addrmanip.h \
-	$(LIB)/GPIO_MODE_OD.h \
-	$(LIB)/STM32F4XX-Local-2.h
+	$(LIB)/STM32F4XX-Local.h
 
 LIBC = \
 	$(LIB)/addrmanip.c \
-	$(LIB)/GPIO_MODE_OD.c
+	$(LIB)/STM32F4XX-Local.c
 
 # Let's abstract the compiler to it's own variable so we can swap it out if/when needed
 GXX = arm-none-eabi-gcc
 
 # Flags on their own for modularity
-CFLAGS = -mcpu=cortex-m4 -g -T stm32_flash.ld -nostdlib -O0
+CFLAGS = -mcpu=cortex-m4 -g -T stm32_flash.ld -nostdlib -O0 -Wall -W -Werror -pedantic
 
-#.PHONY: all
-#all: program.o program.elf program.bin
+.PHONY: all
+all: program.o program.elf program.bin
 
 # Create bin file for flashing
 program.bin: program.elf
@@ -30,7 +30,7 @@ program.elf: program.o
 program.o: program.s program.c $(LIBH)
 	$(GXX) $(CFLAGS) program.s program.c $(LIBC) -o program.o
 
-#.PHONY: clean
+.PHONY: clean
 clean:
 	del /f *.o
 	del /f *.elf

@@ -23,7 +23,6 @@ yield:
 
   mov r1, 0xF00
   movt r1, 0xFF
-  //mul r1, r0
 
   delay:
     subs r1, 3
@@ -35,6 +34,7 @@ yield:
 
 .size yield, .-yield
 */
+
 .type reset_handler, %function
 reset_handler:
   // Set the stack pointer to the end of the stack.

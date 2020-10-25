@@ -1,18 +1,10 @@
-/**
- * stuff
-*/
-#include <stdint.h>
-#include <stdbool.h>
+#include "types.h"
 
-#ifndef STM32_BIT_MANIP
-#define STM32_BIT_MANIP
+#ifndef STM32_ADDR_MANIP
+#define STM32_ADDR_MANIP
 
-uint32_t* addrGrab(volatile uint32_t* addr);
+bool bitsEnabled(vuint32_c* vAddr, size_t bits);
 
-uint32_t getBitPlace(uint8_t bit);
+void setRegisterBits(vuint32_c* vAddr, size_t bits, int toggleType);
 
-bool bitEnabled(uint32_t* addr, uint8_t bit);
-
-void toggleRegisterBit(uint32_t* addr, uint8_t bit, int toggleType);
-
-#endif // STM32_BIT_MANIP
+#endif // STM32_ADDR_MANIP
