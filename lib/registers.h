@@ -8,8 +8,6 @@
  * NOTE: This file should be treated as a dynamic header. Its contents should always be
  * subject to change depending on the needs of the task at hand. We don't want unneccessary
  * bloat.
- * 
- * _A means "Address".
  *
  */
 
@@ -39,25 +37,4 @@
 #define GPIOB_ODR (vuint32_c*) 0x40020414       // port B output data register
 #define GPIOC_ODR (vuint32_c*) 0x40020814       // port C output data register
 
-/* Struct Definitions */
-/*
-typedef struct RCC_R {
-    vuint32_c* RCC_AHB1ENR;
-    vuint32_c* RCC_APB1ENR;
-    vuint32_c* RCC_APB2ENR;
-
-} RCC_Registers;
-
-RCC_Registers RCC_R_Init();
-
-typedef struct ADVC_TIM {
-    vuint32_c* TIM1_CR1;
-    vuint32_c* TIM1_CR2;
-    vuint32_c* TIM1_CNT;
-    vuint32_c* TIM1_PSC;
-
-} ADVC_TIM_Registers;
-
-ADVC_TIM_Registers ADVC_TIM_Init();
-*/
 #endif // STM32_REGISTERS_H
