@@ -1,19 +1,18 @@
 LIB = ./lib
+SRC = $(LIB)/source
 
 LIBH = \
-	$(LIB)/registers.h \
 	$(LIB)/addrmanip.h \
-	$(LIB)/STM32F4XX-Local.h
+	$(LIB)/STM32F4_CMSIS.h
 
 LIBC = \
 	$(LIB)/addrmanip.c \
-	$(LIB)/STM32F4XX-Local.c
 
 # Let's abstract the compiler to it's own variable so we can swap it out if/when needed
 GXX = arm-none-eabi-gcc
 
 # Flags on their own for modularity
-CFLAGS = -mcpu=cortex-m4 -g -T stm32_flash.ld -nostdlib -O0 -Wall -W -Werror -pedantic
+CFLAGS = -mcpu=cortex-m4 -g -T stm32_flash.ld -nostdlib -O0 #-Wall -W -Werror -pedantic
 
 .PHONY: all
 all: program.o program.elf program.bin

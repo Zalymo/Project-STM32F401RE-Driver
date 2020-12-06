@@ -1,6 +1,5 @@
 
 .vscode
-*.o
-*.elf
-*.bin
-.gitignore
+build/*.o
+build/*.elf
+build/*.bin

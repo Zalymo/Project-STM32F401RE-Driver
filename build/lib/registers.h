@@ -53,4 +53,6 @@
 #define GPIOA_AFRL (vuint32_c*)            0x40020020      // port A alternate function high register
 #define GPIOA_AFRH (vuint32_c*)            0x40020024      // port A alternate function high register
 
+
+#define GPIOC_BSRR (vuint32_c*)            0x40020818
 #endif // STM32_REGISTERS_H
