@@ -1,12 +1,12 @@
-LIB = ./lib
-SRC = $(LIB)/source
+INC = ./include
+SRC = ./source
 
 LIBH = \
-	$(LIB)/addrmanip.h \
-	$(LIB)/STM32F4_CMSIS.h
+	$(INC)/type.h \
+	$(INC)/cmsis.h \
+	$(INC)/peripheral.h
 
-LIBC = \
-	$(LIB)/addrmanip.c \
+LIBC = 
 
 # Let's abstract the compiler to it's own variable so we can swap it out if/when needed
 GXX = arm-none-eabi-gcc
