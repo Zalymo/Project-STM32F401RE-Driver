@@ -25,6 +25,4 @@
 #define BIT_TOGGLE(R, M) (R ^= M)
 #define BIT_ON(R, M) (R & M)
 
-//vuint32_c* getClock(uint32_t base);
-
-#endif
+#endif  // STM32F4_PERIPHERAL_H

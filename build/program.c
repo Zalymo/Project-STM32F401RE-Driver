@@ -6,16 +6,9 @@
 #define BUTTON_DOWN_STATE2 3
 
 void INIT_Config();
-
 void buttonClickInput(bool pressed, uint8_t* mode, bool* activated);
 
 int main(void) {
-    // Variables placed here for testing purposes
-    RCC_TypeDef* RCCVar = RCC;
-    TIM_TypeDef* TIM1Var = TIM1;
-    GPIO_TypeDef* GPIOAV = GPIOA;
-    GPIO_TypeDef* GPIOCV = GPIOC;
-
     INIT_Config();
 
     uint8_t dir = 1;
@@ -60,6 +53,8 @@ int main(void) {
             GPIOA->BSRR |= GPIO_BSRR_BR5;
         }
 
+        // If pin C7 (connected to the breadboard button) is high, then the passive buzzer
+        // will buzz according to the value stored in CCR3. Otherwise, it will be silent.
         if (C7_Activated) {
             TIM1->CCR3 = TIM1->CCR1;
         } else {
@@ -79,9 +74,6 @@ void INIT_Config() {
 
     // Set both pin alternate functions to AF01
     GPIOA->AFR[1] |= (GPIO_AFRH_AFSEL8_0 | GPIO_AFRH_AFSEL10_0);
-
-    //GPIOC->PUPDR |= GPIO_PUPDR_PUPD7_1;
-    //GPIOC->OTYPER |= GPIO_OTYPER_OT7;
     
     // Enable timer counters
     TIM1->CR1 |= TIM_CR1_CEN;
@@ -105,6 +97,7 @@ void INIT_Config() {
 void buttonClickInput(bool pressed, uint8_t* mode, bool* activated) {
     uint8_t initialMode = *mode;
 
+    // Button input logic
     if (pressed) {
         if (initialMode == BUTTON_IDLE_STATE1) {
             *mode = BUTTON_DOWN_STATE1;
